@@ -1,0 +1,24 @@
+<div class="main">
+<div class="form-header"><h2>FORM EKLE</h2></div>
+<div class="form">
+  <div *ngFor="let field of fields; let i = index" class="field-container">
+    <mat-form-field appearance="outline">
+      <mat-label>Etiket</mat-label>
+      <input matInput [(ngModel)]="field.label">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="field-type">
+      <mat-label>Tip</mat-label>
+      <mat-select [(ngModel)]="field.type">
+        <mat-option value="text">Text</mat-option>
+        <mat-option value="number">Number</mat-option>
+        <mat-option value="select">Select</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+<div class="button">
+<button mat-raised-button color="primary" (click)="addField()" class="primary">Alan Ekle</button>
+<button mat-raised-button color="primary" (click)="saveForm()">Kaydet</button>
+</div>
+</div>
