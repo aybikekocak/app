@@ -1,5 +1,6 @@
-<div>
-  <button mat-raised-button color="primary" (click)="openFormGroup()">Form Oluştur</button>
-  <button mat-raised-button color="primary" (click)="openFormPage()">Form Doldur</button>
-</div>
+<mat-toolbar color="primary">
+<div class="buttons">
+  <button mat-icon-button class="example-icon" (click)="openFormGroup()" >Form Oluştur</button>
+  <button mat-icon-button class="example-icon" (click)="openFormPage()">Form Doldur</button>
+</div></mat-toolbar>
 <router-outlet></router-outlet>
