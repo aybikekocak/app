@@ -16,6 +16,7 @@ export class FormPageComponent {
 
   ngOnInit() {
     this.createForm();
+    console.log(this.formFields)
   }
   createForm() {
     const formControls: any = {};

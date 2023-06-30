@@ -16,5 +16,8 @@ export class HeaderComponent {
   openFormPage() {
     this.router.navigate(['/formPage']);
   }
+  openListPage(){
+
+  }
 
 }

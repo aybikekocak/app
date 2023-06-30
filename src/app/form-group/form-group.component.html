@@ -19,6 +19,7 @@
 </div>
 <div class="button">
 <button mat-raised-button color="primary" (click)="addField()" class="primary">Alan Ekle</button>
-<button mat-raised-button color="primary" (click)="saveForm()">Kaydet</button>
+<button mat-raised-button color="primary" (click)="convertFields()">Kaydet</button>
 </div>
 </div>
+<app-form-page [formFields]="fields"></app-form-page>
