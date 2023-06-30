@@ -10,12 +10,21 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatChipsModule } from '@angular/material/chips';
 import { FormPageComponent } from './form-page/form-page.component';
+import { HeaderComponent } from './header/header.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  { path: 'formGroup', component: FormGroupComponent },
+  { path: 'formPage', component: FormPageComponent }
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     FormGroupComponent,
-    FormPageComponent // FormPageComponent'ı declarations'a ekleyin
+    FormPageComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +35,10 @@ import { FormPageComponent } from './form-page/form-page.component';
     MatSelectModule,
     MatChipsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatToolbarModule,
+    RouterModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
