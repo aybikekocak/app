@@ -10,14 +10,14 @@ export class HeaderComponent {
   constructor(private router: Router) {}
 
   openFormGroup() {
-    this.router.navigate(['/formGroup']);
+    this.router.navigate(['/form-group']);
   }
 
   openFormPage() {
-    this.router.navigate(['/formPage']);
+    this.router.navigate(['/form-page']);
   }
   openListPage(){
-
+    this.router.navigate(['/form-list']);
   }
 
 }

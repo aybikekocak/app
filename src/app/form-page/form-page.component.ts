@@ -1,5 +1,6 @@
 import { Component,Input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-form-page',
@@ -7,29 +8,17 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./form-page.component.css']
 })
 export class FormPageComponent {
-  @Input() formFields: any[] = [];
+  formLabel: string = '';
+  formType: string = '';
 
-
-  form: FormGroup | any;
-
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.createForm();
-    console.log(this.formFields)
-  }
-  createForm() {
-    const formControls: any = {};
-    for (const field of this.formFields) {
-      formControls[field.name] = [''];
-    }
-    this.form = this.formBuilder.group(formControls);
-  }
-
-  submitForm() {
-    if (this.form.valid) {
-      // Formu gönderme işlemleri burada gerçekleştirilebilir
-      console.log(this.form.value);
-    }
+    this.route.queryParams.subscribe(params => {
+      if (params && params['label'] && params['type']) {
+        this.formLabel = params['label'];
+        this.formType = params['type'];
+      }
+    });
   }
 }

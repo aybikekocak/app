@@ -13,10 +13,16 @@ import { FormPageComponent } from './form-page/form-page.component';
 import { HeaderComponent } from './header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule, Routes } from '@angular/router';
+import { FormListComponent } from './form-list/form-list.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { FormEditComponent } from './form-edit/form-edit.component';
 
 const routes: Routes = [
-  { path: 'formGroup', component: FormGroupComponent },
-  { path: 'formPage', component: FormPageComponent }
+  { path: 'form-group', component: FormGroupComponent },
+  { path: 'form-page', component: FormPageComponent },
+  { path: 'form-list', component: FormListComponent },
+  { path: '', redirectTo: 'form-group', pathMatch: 'full' }
 ];
 
 @NgModule({
@@ -24,7 +30,9 @@ const routes: Routes = [
     AppComponent,
     FormGroupComponent,
     FormPageComponent,
-    HeaderComponent
+    HeaderComponent,
+    FormListComponent,
+    FormEditComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +46,9 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatToolbarModule,
     RouterModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    MatButtonModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

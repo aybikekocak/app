@@ -1,25 +1,38 @@
 <div class="main">
-<div class="form-header"><h2>FORM EKLE</h2></div>
-<div class="form">
-  <div *ngFor="let field of fields; let i = index" class="field-container">
-    <mat-form-field appearance="outline">
-      <mat-label>Etiket</mat-label>
-      <input matInput [(ngModel)]="field.label">
-    </mat-form-field>
+<h2>Form Ekle Sayfası</h2>
+<div>
+  <mat-form-field>
+    <mat-label>Etiket</mat-label>
+    <input matInput type="text" [(ngModel)]="label" />
+  </mat-form-field>
+</div>
+<div>
+  <mat-form-field>
+    <mat-label>Giriş Tipi</mat-label>
+    <mat-select [(ngModel)]="inputType">
+      <mat-option value="text">Text</mat-option>
+      <mat-option value="number">Number</mat-option>
+      <mat-option value="select">Select</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div *ngIf="inputType === 'select'">
+  <mat-form-field>
+    <mat-label>Seçenekler</mat-label>
+    <textarea matInput [(ngModel)]="options"></textarea>
+  </mat-form-field>
+</div>
+<button mat-raised-button color="primary" (click)="addField()">Alan Ekle</button>
 
-    <mat-form-field appearance="outline" class="field-type">
-      <mat-label>Tip</mat-label>
-      <mat-select [(ngModel)]="field.type">
-        <mat-option value="text">Text</mat-option>
-        <mat-option value="number">Number</mat-option>
-        <mat-option value="select">Select</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
+<div class="added-fields">
+<h3>Eklenecek Alanlar:</h3>
+<ul>
+  <li *ngFor="let form of forms">
+    {{ form.label }} ({{ form.type }})
+  </li>
+</ul>
 </div>
-<div class="button">
-<button mat-raised-button color="primary" (click)="addField()" class="primary">Alan Ekle</button>
-<button mat-raised-button color="primary" (click)="convertFields()">Kaydet</button>
+<div class="save-button">
+<button mat-raised-button color="primary" (click)="saveForm()">Formu Kaydet</button>
 </div>
 </div>
-<app-form-page [formFields]="fields"></app-form-page>
