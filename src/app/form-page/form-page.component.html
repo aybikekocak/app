@@ -1,10 +1,26 @@
-<div>
-<div>
-<h2>Formu Doldur</h2></div>
-<div fxLayout="row" fxLayoutAlign="center">
-  <mat-form-field>
+
+<div fxLayout="row" fxLayoutAlign="center" class="main">
+  <mat-form-field *ngIf="formType === 'select'">
     <mat-label>{{ formLabel }}</mat-label>
-    <input matInput [type]="formType" />
+    <mat-select [formControl]="formControl">
+      <mat-option *ngFor="let option of formOptions" [value]="option">{{ option }}</mat-option>
+    </mat-select>
   </mat-form-field>
+  <mat-form-field *ngIf="formType !== 'select'">
+    <mat-label>{{ formLabel }}</mat-label>
+    <input matInput [formControl]="formControl" [type]="formType" />
+  </mat-form-field>
+
+<div class="button">
+  <button mat-raised-button color="primary" (click)="addToOptions()">Ekle</button>
 </div>
+
+<div class="added">
+  <h2>Eklenen Değerler:</h2>
+  <ul>
+    <li *ngFor="let option of formOptions">{{ option }}</li>
+  </ul>
 </div>
+
+</div>
+

@@ -1,7 +1,24 @@
-<h2>Form Düzenle</h2>
+<h2>Formu Düzenle</h2>
 <div>
-  <label>Etiket:</label>
-  <input type="text" [(ngModel)]="selectedForm!.label" />
+  <mat-form-field>
+    <mat-label>Etiket</mat-label>
+    <input matInput type="text" [(ngModel)]="form.label" />
+  </mat-form-field>
 </div>
-
-<button (click)="saveChanges()">Değişiklikleri Kaydet</button>
+<div>
+  <mat-form-field>
+    <mat-label>Giriş Tipi</mat-label>
+    <mat-select [(ngModel)]="form.type">
+      <mat-option value="text">Text</mat-option>
+      <mat-option value="number">Number</mat-option>
+      <mat-option value="select">Select</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div *ngIf="form.type === 'select'">
+  <mat-form-field>
+    <mat-label>Seçenekler</mat-label>
+    <textarea matInput [(ngModel)]="form.options"></textarea>
+  </mat-form-field>
+</div>
+<button mat-raised-button color="primary" (click)="saveForm()">Değişiklikleri Kaydet</button>

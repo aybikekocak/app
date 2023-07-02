@@ -17,6 +17,8 @@ import { FormListComponent } from './form-list/form-list.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { FormEditComponent } from './form-edit/form-edit.component';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 const routes: Routes = [
   { path: 'form-group', component: FormGroupComponent },
@@ -48,7 +50,8 @@ const routes: Routes = [
     RouterModule,
     RouterModule.forRoot(routes),
     MatButtonModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-form-edit',
@@ -7,14 +8,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./form-edit.component.css']
 })
 export class FormEditComponent {
+  form: { label: string, type: string, options?: string[] };
+  index: number;
 
-  @Input() selectedForm!: { label: string, type: string, options?: string[] } | null;
+  constructor(@Inject(MAT_DIALOG_DATA) private data: { form: { label: string, type: string, options?: string[] }, index: number }, private dialogRef: MatDialogRef<FormEditComponent>) {
+    this.form = data.form;
+    this.index = data.index;
+  }
 
-  constructor(private router: Router) { }
-
-  saveChanges() {
-    // Değişiklikleri kaydetme işlemleri yapılabilir
-    console.log('Değişiklikler kaydedildi:', this.selectedForm);
-    this.router.navigate(['/form-list']);
+  saveForm() {
+    // Formu kaydetme işlemleri yapılabilir
+    console.log('Düzenlenen form:', this.form);
+    console.log('Formun indeksi:', this.index);
+    this.dialogRef.close(this.form)
   }
 }

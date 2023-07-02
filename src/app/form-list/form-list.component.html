@@ -1,14 +1,14 @@
-<table mat-table [dataSource]="forms">
+<table mat-table [dataSource]="dataSource">
   <ng-container matColumnDef="label">
     <th mat-header-cell *matHeaderCellDef>Etiket</th>
     <td mat-cell *matCellDef="let form">{{ form.label }}</td>
   </ng-container>
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef>İşlemler</th>
-    <td mat-cell *matCellDef="let form">
+    <td mat-cell *matCellDef="let form; let i = index">
       <button mat-button (click)="fillForm(form)">Doldur</button>
-      <button mat-button (click)="editForm(form)">Düzenle</button>
-      <button mat-button (click)="deleteForm(form)">Sil</button>
+      <button mat-button (click)="editForm(form, i)">Düzenle</button>
+      <button mat-button (click)="deleteForm(i)">Sil</button>
     </td>
   </ng-container>
 
