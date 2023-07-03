@@ -27,7 +27,8 @@ export class FormGroupComponent {
       //@ts-ignore
       field.options = options.length > 0 ? options : undefined;
     }
-    this.forms.push(field);
+    if(this.inputType && this.label){ this.forms.push(field);}
+
     this.label = '';
     this.inputType = 'text';
     this.options = '';
