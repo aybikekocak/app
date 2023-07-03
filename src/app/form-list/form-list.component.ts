@@ -34,7 +34,7 @@ export class FormListComponent {
       if (params && params['forms']) {
         this.forms = JSON.parse(params['forms']);
         this.dataSource = new MatTableDataSource<{ label: string, type: string, options?: string[] }>(this.forms);
-        this.saveFormsToSessionStorage(); // Formları sessionStorage'a kaydet
+        this.saveFormsToSessionStorage();
       }
     });
   }

@@ -17,9 +17,6 @@ export class FormEditComponent {
   }
 
   saveForm() {
-    // Formu kaydetme işlemleri yapılabilir
-    console.log('Düzenlenen form:', this.form);
-    console.log('Formun indeksi:', this.index);
     this.dialogRef.close(this.form)
   }
 }
