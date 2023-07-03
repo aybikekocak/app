@@ -20,18 +20,26 @@ export class FormGroupComponent {
 
   constructor(private router: Router) {}
 
-  addField() {
+  addField(field2?: { label: string, type: string }) {
     const field = { label: this.label, type: this.inputType };
+
     if (this.inputType === 'select') {
       const options = this.options.split('\n').map(option => option.trim());
       //@ts-ignore
       field.options = options.length > 0 ? options : undefined;
     }
-    if(this.inputType && this.label){ this.forms.push(field);}
 
-    this.label = '';
-    this.inputType = 'text';
-    this.options = '';
+    const formExists = this.forms.some(form => form.label === field.label && form.type === field.type);
+    if (formExists) {
+      return;
+    }
+
+    if (this.inputType && this.label) {
+      this.forms.push(field);
+      this.label = '';
+      this.inputType = 'text';
+      this.options = '';
+    }
   }
 
   saveFormsToSessionStorage() {
